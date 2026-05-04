@@ -13,7 +13,7 @@ namespace MPF.Avalonia
         {
             Name = "MPF";
             AvaloniaXamlLoader.Load(this);
-            StringResourceLoader.LoadEnglish(Resources);
+            StringResourceLoader.Load(Resources, InterfaceLanguage.English);
         }
 
         public override void OnFrameworkInitializationCompleted()
