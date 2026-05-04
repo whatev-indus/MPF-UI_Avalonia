@@ -54,9 +54,7 @@
         <AvaloniaResource Include="..\MPF.UI\Images\**\*">
             <Link>Assets\%(Filename)%(Extension)</Link>
         </AvaloniaResource>
-        <AvaloniaResource Include="..\MPF.UI\Resources\**\*">
-            <Link>Resources\%(RecursiveDir)%(Filename)%(Extension)</Link>
-        </AvaloniaResource>
+        <EmbeddedResource Include="..\MPF.UI\Resources\**\*" Link="Resources\%(Filename)%(Extension)" />
     </ItemGroup>
 
 </Project>
