@@ -66,7 +66,7 @@ CHECK_RUNTIMES=("win-x86" "win-x64" "win-arm64" "linux-x64" "linux-arm64" "osx-x
 
 # Use expanded framework lists, if requested
 if [ $USE_ALL = true ]; then
-    AVALONIA_FRAMEWORKS=("net10.0") # TODO: Support more
+    AVALONIA_FRAMEWORKS=("net5.0" "net6.0" "net7.0" "net8.0" "net9.0" "net10.0")
     UI_FRAMEWORKS=("net40" "net452" "net462" "net472" "net48" "netcoreapp3.1" "net5.0-windows" "net6.0-windows" "net7.0-windows" "net8.0-windows" "net9.0-windows" "net10.0-windows")
     CHECK_FRAMEWORKS=("net20" "net35" "net40" "net452" "net462" "net472" "net48" "netcoreapp3.1" "net5.0" "net6.0" "net7.0" "net8.0" "net9.0" "net10.0")
 fi

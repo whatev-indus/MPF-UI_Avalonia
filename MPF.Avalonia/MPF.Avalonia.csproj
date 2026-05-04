@@ -54,7 +54,9 @@
         <AvaloniaResource Include="..\MPF.UI\Images\**\*">
             <Link>Assets\%(Filename)%(Extension)</Link>
         </AvaloniaResource>
-        <None Include="..\MPF.UI\Resources\**\*" Link="Resources\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <AvaloniaResource Include="..\MPF.UI\Resources\**\*">
+            <Link>Resources\%(RecursiveDir)%(Filename)%(Extension)</Link>
+        </AvaloniaResource>
     </ItemGroup>
 
 </Project>
