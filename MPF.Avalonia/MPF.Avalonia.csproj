@@ -1,35 +1,46 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <AssemblyName>MPF.Avalonia</AssemblyName>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>MPF.Avalonia</RootNamespace>
-    <TargetFramework>net10.0</TargetFramework>
-    <ApplicationIcon>..\MPF.UI\Images\Icon.ico</ApplicationIcon>
-    <Product>MPF</Product>
-    <Title>MPF</Title>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-    <NoWarn>NU1903</NoWarn>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <VersionPrefix>0.1.8</VersionPrefix>
-  </PropertyGroup>
+    <PropertyGroup>
+        <!-- Assembly Properties -->
+        <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+        <OutputType>WinExe</OutputType>
+        <ApplicationIcon>..\MPF.UI\Images\Icon.ico</ApplicationIcon>
+        <CheckEolTargetFramework>false</CheckEolTargetFramework>
+        <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <LangVersion>latest</LangVersion>
+        <NoWarn>NU1902;NU1903</NoWarn>
+        <Nullable>enable</Nullable>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <VersionPrefix>3.7.1</VersionPrefix>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MPF.Frontend\MPF.Frontend.csproj" />
-  </ItemGroup>
+        <!-- Package Properties -->
+        <AssemblyName>MPF</AssemblyName>
+        <Authors>Matt Nadareski;ReignStumble;Jakz</Authors>
+        <Description>Frontend for various dumping programs</Description>
+        <Copyright>Copyright (c) Matt Nadareski 2019-2026</Copyright>
+        <PackageProjectUrl>https://github.com/SabreTools/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/SabreTools/MPF</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.3.12" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.3.12" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.12" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MPF.Frontend\MPF.Frontend.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <AvaloniaResource Include="..\MPF.UI\Images\**\*">
-      <Link>Assets\%(Filename)%(Extension)</Link>
-    </AvaloniaResource>
-    <None Include="..\MPF.UI\Resources\**\*" Link="Resources\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.12" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.12" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="..\MPF.UI\Images\**\*">
+            <Link>Assets\%(Filename)%(Extension)</Link>
+        </AvaloniaResource>
+        <None Include="..\MPF.UI\Resources\**\*" Link="Resources\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
 
 </Project>
