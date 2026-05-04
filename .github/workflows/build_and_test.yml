@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
     push:
-        branches: ["master", "feature/avalonia-port"]
+        branches: ["master", "cleanup"]
         tags: ["v*"]
     pull_request:
 
@@ -264,19 +264,3 @@ jobs:
                   replacesArtifacts: True
                   tag: "rolling"
                   updateOnlyUnreleased: True
-
-            - name: Upload to versioned release
-              if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
-              uses: ncipollo/release-action@v1.20.0
-              with:
-                  allowUpdates: True
-                  artifacts: "artifacts/*"
-                  body: "Built commit: ${{ github.sha }}
-
-                      ## Avalonia Builds
-
-                      This versioned release preserves Avalonia UI build artifacts."
-                  name: "${{ github.ref_name }}"
-                  prerelease: False
-                  replacesArtifacts: True
-                  tag: "${{ github.ref_name }}"
