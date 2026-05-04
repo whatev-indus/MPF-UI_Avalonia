@@ -54,7 +54,9 @@
         <AvaloniaResource Include="..\MPF.UI\Images\**\*">
             <Link>Assets\%(Filename)%(Extension)</Link>
         </AvaloniaResource>
-        <AvaloniaResource Include="Resources\**\*.xaml" />
+        <AvaloniaResource Include="Resources\**\*">
+            <Link>Assets\%(Filename)%(Extension)</Link>
+        </AvaloniaResource>
     </ItemGroup>
 
 </Project>
