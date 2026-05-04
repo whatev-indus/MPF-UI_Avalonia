@@ -45,7 +45,7 @@ jobs:
                   import struct
                   from pathlib import Path
 
-                  ico = Path("MPF.Avalonia/Assets/Icon.ico").read_bytes()
+                  ico = Path("MPF.UI/Images/Icon.ico").read_bytes()
                   count = struct.unpack_from("<H", ico, 4)[0]
                   for index in range(count):
                       entry_offset = 6 + index * 16
@@ -151,7 +151,7 @@ jobs:
                   import struct
                   from pathlib import Path
 
-                  ico = Path("MPF.Avalonia/Assets/Icon.ico").read_bytes()
+                  ico = Path("MPF.UI/Images/Icon.ico").read_bytes()
                   count = struct.unpack_from("<H", ico, 4)[0]
                   for index in range(count):
                       entry_offset = 6 + index * 16
