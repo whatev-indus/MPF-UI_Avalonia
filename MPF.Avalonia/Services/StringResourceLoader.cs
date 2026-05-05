@@ -40,7 +40,8 @@ namespace MPF.Avalonia.Services
 
         private static void AddResource(IResourceDictionary resources, string fileName)
         {
-            var uri = new Uri($"avares://MPF.Avalonia/Assets/{fileName}");
+            string assemblyName = typeof(StringResourceLoader).Assembly.GetName().Name ?? "MPF";
+            var uri = new Uri($"avares://{assemblyName}/Assets/{fileName}");
             
             var resourceInclude = new ResourceInclude(uri)
             {
