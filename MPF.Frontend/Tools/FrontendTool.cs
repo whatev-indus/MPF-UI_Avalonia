@@ -557,7 +557,7 @@ namespace MPF.Frontend.Tools
 
                 // Get the latest tag from GitHub
                 _ = GetRemoteVersionAndUrl(out string? tag, out url);
-                different = version != tag && tag is not null;
+                different = IsRemoteVersionNewer(version, tag);
                 message = $"Local version: {version}{Environment.NewLine}Remote version: {tag}";
             }
             catch
@@ -586,6 +586,74 @@ namespace MPF.Frontend.Tools
             {
                 return ex.ToString();
             }
+        }
+
+        /// <summary>
+        /// Determine if a remote version tag represents a newer version.
+        /// </summary>
+        internal static bool IsRemoteVersionNewer(string? localVersion, string? remoteVersion)
+        {
+            if (!TryParseVersionComponents(localVersion, out int[] localComponents)
+                || !TryParseVersionComponents(remoteVersion, out int[] remoteComponents))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < localComponents.Length; i++)
+            {
+                if (remoteComponents[i] > localComponents[i])
+                    return true;
+                else if (remoteComponents[i] < localComponents[i])
+                    return false;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Try to parse common release tag formats into comparable version components.
+        /// </summary>
+        private static bool TryParseVersionComponents(string? version, out int[] components)
+        {
+            components = new int[0];
+            if (string.IsNullOrEmpty(version))
+                return false;
+
+            version = version!.Trim();
+            if (version.Length == 0)
+                return false;
+
+            if (version[0] == 'v' || version[0] == 'V')
+                version = version.Substring(1);
+
+            int suffixIndex = -1;
+            for (int i = 0; i < version.Length; i++)
+            {
+                char current = version[i];
+                if (!char.IsDigit(current) && current != '.')
+                {
+                    suffixIndex = i;
+                    break;
+                }
+            }
+
+            if (suffixIndex >= 0)
+                version = version.Substring(0, suffixIndex);
+
+            string[] splitVersion = version.Split('.');
+            if (splitVersion.Length == 0 || splitVersion.Length > 4)
+                return false;
+
+            components = new int[4];
+            for (int i = 0; i < splitVersion.Length; i++)
+            {
+                if (splitVersion[i].Length == 0 || !int.TryParse(splitVersion[i], out int component))
+                    return false;
+
+                components[i] = component;
+            }
+
+            return true;
         }
 
         /// <summary>
