@@ -57,11 +57,11 @@ echo "  No archive (-a)                       $NO_ARCHIVE"
 echo " "
 
 # Create the build matrix arrays
-AVALONIA_FRAMEWORKS=("net5.0" "net6.0" "net7.0" "net8.0" "net9.0" "net10.0")
+AVALONIA_FRAMEWORKS=("net10.0")
 AVALONIA_RUNTIMES=("win-x86" "win-x64" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
-UI_FRAMEWORKS=()
+UI_FRAMEWORKS=("net10.0-windows")
 UI_RUNTIMES=("win-x86" "win-x64")
-CHECK_FRAMEWORKS=()
+CHECK_FRAMEWORKS=("net10.0")
 CHECK_RUNTIMES=("win-x86" "win-x64" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
 
 # Use expanded framework lists, if requested
