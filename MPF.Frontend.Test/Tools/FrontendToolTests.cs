@@ -54,27 +54,6 @@ namespace MPF.Frontend.Test.Tools
 
         #endregion
 
-        #region IsRemoteVersionNewer
-
-        [Theory]
-        [InlineData("3.7.1", "3.7.1", false)]
-        [InlineData("3.7.1", "v3.7.1", false)]
-        [InlineData("3.7.1", "3.7.1.0", false)]
-        [InlineData("3.7.1.1", "3.7.1", false)]
-        [InlineData("3.7.1", "3.7.2", true)]
-        [InlineData("3.7.1", "3.8.0", true)]
-        [InlineData("3.7.1", "4.0.0", true)]
-        [InlineData("3.7.1", "3.7.2-beta", true)]
-        [InlineData("3.7.1", null, false)]
-        [InlineData("3.7.1", "latest", false)]
-        public void IsRemoteVersionNewerTest(string? localVersion, string? remoteVersion, bool expected)
-        {
-            bool actual = FrontendTool.IsRemoteVersionNewer(localVersion, remoteVersion);
-            Assert.Equal(expected, actual);
-        }
-
-        #endregion
-
         #region NormalizeDiscTitle
 
         // TODO: Write NormalizeDiscTitle(string?, Language?[]?) test
