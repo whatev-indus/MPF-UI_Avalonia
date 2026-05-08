@@ -258,19 +258,19 @@ namespace MPF.Frontend
             if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
                 if (!string.IsNullOrWhiteSpace(VolumeLabel))
-                    return VolumeLabel;
+                    return VolumeLabel!;
 
-                string volumePath = Name.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                string volumePath = Name!.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                 string volumeName = Path.GetFileName(volumePath);
                 if (!string.IsNullOrWhiteSpace(volumeName))
                     return volumeName;
             }
 
-            string displayName = Name;
+            string displayName = Name!;
             if (displayName.Length > 1)
                 displayName = displayName.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
-            return string.IsNullOrEmpty(displayName) ? Name : displayName;
+            return string.IsNullOrEmpty(displayName) ? Name! : displayName;
         }
 
         #endregion
