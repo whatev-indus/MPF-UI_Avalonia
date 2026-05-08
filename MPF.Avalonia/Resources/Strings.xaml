@@ -65,7 +65,7 @@
     <x:String x:Key="DetectionGroupBoxString">Detection</x:String>
     <x:String x:Key="SkipSystemDetectCheckBoxString">Skip System Detect</x:String>
     <x:String x:Key="NoFixedDrivesCheckBoxString">No Fixed Drives</x:String>
-    <x:String x:Key="DefaultSystemLabelString">Default x:</x:String>
+    <x:String x:Key="DefaultSystemLabelString">Default System:</x:String>
     <x:String x:Key="LoggingGroupBoxString">Logging</x:String>
     <x:String x:Key="VerboseLoggingCheckBoxString">Verbose Logging</x:String>
     <x:String x:Key="AutoOpenLogCheckBoxString">Auto-Open Logs</x:String>

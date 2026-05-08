@@ -124,6 +124,7 @@
                           Grid.Column="1"
                           ItemsSource="{Binding InternalPrograms}"
                           SelectedItem="{Binding Options.InternalProgram, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
+                          HorizontalAlignment="Stretch"
                           VerticalAlignment="Center" />
 
                 <TextBlock Grid.Row="4" Text="{DynamicResource DefaultOutputPathLabelString}" HorizontalAlignment="Right" VerticalAlignment="Center" />

@@ -9,6 +9,7 @@
                   x:Class="MPF.Avalonia.Windows.MainWindow"
                   MinWidth="612"
                   Width="612"
+                  MaxWidth="612"
                   SizeToContent="Height"
                   CanResize="False"
                   CanMaximize="False"
@@ -111,12 +112,12 @@
                 ColumnSpacing="18">
           <TextBlock Grid.Row="0" Text="{DynamicResource SystemLabelString}" VerticalAlignment="Center" />
           <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,180" ColumnSpacing="8">
-            <localControls:MeasuredDropDownComboBox x:Name="SystemTypeComboBox"
-                                                    IgnoreHeaderItemsInMeasurement="True"
-                                                    SizeToSelectedItem="True"
-                                                    ItemsSource="{Binding Systems}"
-                                                    SelectedItem="{Binding CurrentSystem, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
-                                                    IsEnabled="{Binding SystemTypeComboBoxEnabled}" />
+            <ComboBox x:Name="SystemTypeComboBox"
+                      Grid.Column="0"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Systems}"
+                      SelectedItem="{Binding CurrentSystem, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
+                      IsEnabled="{Binding SystemTypeComboBoxEnabled}" />
             <ComboBox x:Name="MediaTypeComboBox"
                       Grid.Column="1"
                       ItemsSource="{Binding MediaTypes}"
