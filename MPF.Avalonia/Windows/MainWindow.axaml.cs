@@ -352,15 +352,7 @@ namespace MPF.Avalonia.Windows
             if (logPanel is null || logOutput is null)
                 return;
 
-            if (!logPanel.IsExpanded)
-            {
-                logOutput.SetConsoleHeight(LogOutput.DefaultConsoleHeight);
-                return;
-            }
-
-            double expandedBaseHeight = _expandedWindowHeight + ExpandedLogPanelExtraHeight;
-            double extraHeight = Math.Max(0, Height - expandedBaseHeight);
-            logOutput.SetConsoleHeight(LogOutput.DefaultConsoleHeight + extraHeight);
+            logOutput.SetConsoleHeight(LogOutput.DefaultConsoleHeight);
         }
 
         private bool? ShowMediaInformationWindow(Options? options, ref SubmissionInfo? submissionInfo)

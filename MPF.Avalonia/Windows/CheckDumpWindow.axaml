@@ -8,6 +8,7 @@
                   Width="540"
                   SizeToContent="Height"
                   CanResize="False"
+                  CanMaximize="False"
                   Title="{DynamicResource CheckDumpTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />

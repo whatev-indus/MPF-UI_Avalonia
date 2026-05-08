@@ -11,6 +11,7 @@
                   Width="612"
                   SizeToContent="Height"
                   CanResize="False"
+                  CanMaximize="False"
                   SystemDecorations="None"
                   Title="{DynamicResource AppTitleString}">
   <local:WindowBase.Resources>
@@ -109,7 +110,7 @@
                 RowSpacing="4"
                 ColumnSpacing="18">
           <TextBlock Grid.Row="0" Text="{DynamicResource SystemLabelString}" VerticalAlignment="Center" />
-          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="Auto,180" ColumnSpacing="8">
+          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,180" ColumnSpacing="8">
             <localControls:MeasuredDropDownComboBox x:Name="SystemTypeComboBox"
                                                     IgnoreHeaderItemsInMeasurement="True"
                                                     SizeToSelectedItem="True"
@@ -137,7 +138,13 @@
                     HorizontalAlignment="Left"
                     ItemsSource="{Binding Drives}"
                     SelectedItem="{Binding CurrentDrive, Mode=TwoWay}"
-                    IsEnabled="{Binding DriveLetterComboBoxEnabled}" />
+                    IsEnabled="{Binding DriveLetterComboBoxEnabled}">
+            <ComboBox.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding DisplayName}" />
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
 
           <TextBlock Grid.Row="3" Text="{DynamicResource DriveSpeedLabelString}" VerticalAlignment="Center" />
           <ComboBox x:Name="DriveSpeedComboBox"

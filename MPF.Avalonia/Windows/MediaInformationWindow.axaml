@@ -5,10 +5,11 @@
                   xmlns:localControls="using:MPF.Avalonia.Controls"
                   xmlns:converters="using:MPF.Avalonia"
                   x:Class="MPF.Avalonia.Windows.MediaInformationWindow"
-                  Width="700"
+                  Width="612"
                   MaxHeight="800"
                   SizeToContent="Height"
                   CanResize="False"
+                  CanMaximize="False"
                   Title="{DynamicResource MediaInformationTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />

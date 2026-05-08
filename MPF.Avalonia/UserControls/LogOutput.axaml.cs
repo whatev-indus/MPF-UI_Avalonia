@@ -5,6 +5,8 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Styling;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
+using MPF.Avalonia.Services;
 using MPF.Frontend;
 
 namespace MPF.Avalonia.UserControls
@@ -68,11 +70,21 @@ namespace MPF.Avalonia.UserControls
         private void OnClearButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
             => Entries.Clear();
 
-        private void OnSaveButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
+        private async void OnSaveButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
-            using var writer = new StreamWriter(File.Open("console.log", FileMode.Create, FileAccess.Write, FileShare.Read));
+            string logPath = "console.log";
+            if (!OperatingSystem.IsWindows() && this.GetVisualRoot() is Window owner)
+            {
+                string? directory = await DialogService.OpenFolderAsync(owner, "Save Log");
+                if (string.IsNullOrWhiteSpace(directory))
+                    return;
+
+                logPath = Path.Combine(directory, "console.log");
+            }
+
+            using var writer = new StreamWriter(File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.Read));
             foreach (LogEntry entry in Entries)
-                writer.Write(entry.Text);
+                writer.WriteLine(entry.Text);
         }
 
         public sealed record LogEntry(string Text, IBrush Foreground);

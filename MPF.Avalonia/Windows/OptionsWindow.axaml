@@ -8,6 +8,7 @@
                   MaxHeight="760"
                   SizeToContent="Height"
                   CanResize="False"
+                  CanMaximize="False"
                   Title="{DynamicResource OptionsTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />

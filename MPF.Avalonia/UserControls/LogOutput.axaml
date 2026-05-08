@@ -6,11 +6,13 @@
     <Border x:Name="LogSurface"
             Grid.Row="0"
             Height="180"
+            MaxHeight="180"
             Margin="0,0,0,2"
             Background="{DynamicResource LogBackgroundBrush}"
             CornerRadius="0,0,0,0">
       <ScrollViewer x:Name="Scroller"
-                    HorizontalScrollBarVisibility="Visible">
+                    HorizontalScrollBarVisibility="Visible"
+                    VerticalScrollBarVisibility="Auto">
         <ItemsControl x:Name="ItemsHost"
                       Margin="0,6,0,0"
                       ItemsSource="{Binding Entries, RelativeSource={RelativeSource AncestorType=local:LogOutput}}">
