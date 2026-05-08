@@ -257,12 +257,12 @@ namespace MPF.Frontend
             // Deal with non-Windows drive names
             if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
-                if (!string.IsNullOrWhiteSpace(VolumeLabel))
+                if (!string.IsNullOrEmpty(VolumeLabel))
                     return VolumeLabel!;
 
                 string volumePath = Name!.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                 string volumeName = Path.GetFileName(volumePath);
-                if (!string.IsNullOrWhiteSpace(volumeName))
+                if (!string.IsNullOrEmpty(volumeName))
                     return volumeName;
             }
 
