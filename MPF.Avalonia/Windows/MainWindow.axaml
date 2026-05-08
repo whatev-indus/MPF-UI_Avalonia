@@ -108,10 +108,10 @@
           <TextBlock Text="{DynamicResource SettingsGroupBoxString}" FontWeight="Bold" />
           <Grid ColumnDefinitions="120,*"
                 RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                RowSpacing="4"
+                RowSpacing="4"  
                 ColumnSpacing="18">
           <TextBlock Grid.Row="0" Text="{DynamicResource SystemLabelString}" VerticalAlignment="Center" />
-          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,180" ColumnSpacing="8">
+          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
             <ComboBox x:Name="SystemTypeComboBox"
                       Grid.Column="0"
                       HorizontalAlignment="Stretch"
@@ -120,6 +120,8 @@
                       IsEnabled="{Binding SystemTypeComboBoxEnabled}" />
             <ComboBox x:Name="MediaTypeComboBox"
                       Grid.Column="1"
+                      MinWidth="150"
+                      HorizontalAlignment="Stretch"
                       ItemsSource="{Binding MediaTypes}"
                       SelectedItem="{Binding CurrentMediaType, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
                       IsEnabled="{Binding MediaTypeComboBoxEnabled}" />
