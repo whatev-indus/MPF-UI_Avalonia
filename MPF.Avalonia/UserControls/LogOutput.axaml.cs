@@ -5,6 +5,8 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Styling;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
+using MPF.Avalonia.Services;
 using MPF.Frontend;
 
 namespace MPF.Avalonia.UserControls
@@ -35,13 +37,39 @@ namespace MPF.Avalonia.UserControls
                 IBrush brush = GetBrush(logLevel);
                 foreach (string line in text.Replace("\r\n", "\n").TrimEnd('\n').Split('\n'))
                 {
-                    Entries.Add(new LogEntry(line, brush));
-                    if (Entries.Count > MaxEntryCount)
-                        Entries.RemoveAt(0);
+                    AddOrReplaceLine(line, brush);
                 }
 
                 this.FindControl<ScrollViewer>("Scroller")?.ScrollToEnd();
             });
+        }
+
+        private void AddOrReplaceLine(string line, IBrush brush)
+        {
+            string[] parts = line.Split('\r');
+            if (parts.Length == 1)
+            {
+                AddLine(parts[0], brush);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(parts[0]))
+                AddLine(parts[0], brush);
+
+            for (int i = 1; i < parts.Length; i++)
+            {
+                if (Entries.Count == 0)
+                    AddLine(parts[i], brush);
+                else
+                    Entries[^1] = new LogEntry(parts[i], brush);
+            }
+        }
+
+        private void AddLine(string line, IBrush brush)
+        {
+            Entries.Add(new LogEntry(line, brush));
+            if (Entries.Count > MaxEntryCount)
+                Entries.RemoveAt(0);
         }
 
         public void SetConsoleHeight(double height)
@@ -68,11 +96,21 @@ namespace MPF.Avalonia.UserControls
         private void OnClearButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
             => Entries.Clear();
 
-        private void OnSaveButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
+        private async void OnSaveButton(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
         {
-            using var writer = new StreamWriter(File.Open("console.log", FileMode.Create, FileAccess.Write, FileShare.Read));
+            string logPath = "console.log";
+            if (!OperatingSystem.IsWindows() && this.GetVisualRoot() is Window owner)
+            {
+                string? directory = await DialogService.OpenFolderAsync(owner, "Save Log");
+                if (string.IsNullOrWhiteSpace(directory))
+                    return;
+
+                logPath = Path.Combine(directory, "console.log");
+            }
+
+            using var writer = new StreamWriter(File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.Read));
             foreach (LogEntry entry in Entries)
-                writer.Write(entry.Text);
+                writer.WriteLine(entry.Text);
         }
 
         public sealed record LogEntry(string Text, IBrush Foreground);
