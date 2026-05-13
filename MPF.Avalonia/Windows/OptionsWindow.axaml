@@ -8,7 +8,6 @@
                   MaxHeight="760"
                   SizeToContent="Height"
                   CanResize="False"
-                  CanMaximize="False"
                   Title="{DynamicResource OptionsTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />
@@ -124,7 +123,6 @@
                           Grid.Column="1"
                           ItemsSource="{Binding InternalPrograms}"
                           SelectedItem="{Binding Options.InternalProgram, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
-                          HorizontalAlignment="Stretch"
                           VerticalAlignment="Center" />
 
                 <TextBlock Grid.Row="4" Text="{DynamicResource DefaultOutputPathLabelString}" HorizontalAlignment="Right" VerticalAlignment="Center" />

@@ -5,7 +5,6 @@
         MaxWidth="450"
         SizeToContent="WidthAndHeight"
         CanResize="False"
-        CanMaximize="False"
         WindowStartupLocation="CenterOwner">
   <Border Padding="12">
     <Grid RowDefinitions="Auto,Auto" RowSpacing="8">

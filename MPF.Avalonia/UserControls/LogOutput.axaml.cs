@@ -37,13 +37,39 @@ namespace MPF.Avalonia.UserControls
                 IBrush brush = GetBrush(logLevel);
                 foreach (string line in text.Replace("\r\n", "\n").TrimEnd('\n').Split('\n'))
                 {
-                    Entries.Add(new LogEntry(line, brush));
-                    if (Entries.Count > MaxEntryCount)
-                        Entries.RemoveAt(0);
+                    AddOrReplaceLine(line, brush);
                 }
 
                 this.FindControl<ScrollViewer>("Scroller")?.ScrollToEnd();
             });
+        }
+
+        private void AddOrReplaceLine(string line, IBrush brush)
+        {
+            string[] parts = line.Split('\r');
+            if (parts.Length == 1)
+            {
+                AddLine(parts[0], brush);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(parts[0]))
+                AddLine(parts[0], brush);
+
+            for (int i = 1; i < parts.Length; i++)
+            {
+                if (Entries.Count == 0)
+                    AddLine(parts[i], brush);
+                else
+                    Entries[^1] = new LogEntry(parts[i], brush);
+            }
+        }
+
+        private void AddLine(string line, IBrush brush)
+        {
+            Entries.Add(new LogEntry(line, brush));
+            if (Entries.Count > MaxEntryCount)
+                Entries.RemoveAt(0);
         }
 
         public void SetConsoleHeight(double height)

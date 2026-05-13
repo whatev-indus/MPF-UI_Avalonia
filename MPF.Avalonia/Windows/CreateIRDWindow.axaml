@@ -5,7 +5,6 @@
                   Width="612"
                   SizeToContent="Height"
                   CanResize="False"
-                  CanMaximize="False"
                   Title="{DynamicResource CreatePS3IRDTitleString}">
   <Border Padding="8,5">
     <Grid RowDefinitions="Auto,*,Auto,Auto" RowSpacing="6">

@@ -6,7 +6,6 @@
                   MaxHeight="1024"
                   SizeToContent="Height"
                   CanResize="False"
-                  CanMaximize="False"
                   Title="{DynamicResource RingCodeGuideTitleString}">
   <TabControl Background="{DynamicResource AppBackgroundBrush}"
               Foreground="{DynamicResource AppForegroundBrush}"

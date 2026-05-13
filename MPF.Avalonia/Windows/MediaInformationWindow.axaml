@@ -5,11 +5,10 @@
                   xmlns:localControls="using:MPF.Avalonia.Controls"
                   xmlns:converters="using:MPF.Avalonia"
                   x:Class="MPF.Avalonia.Windows.MediaInformationWindow"
-                  Width="612"
+                  Width="700"
                   MaxHeight="800"
                   SizeToContent="Height"
                   CanResize="False"
-                  CanMaximize="False"
                   Title="{DynamicResource MediaInformationTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />
@@ -38,18 +37,20 @@
 
                   <Grid ColumnDefinitions="3*,7*" ColumnSpacing="4" HorizontalAlignment="Stretch">
                     <TextBlock Text="{DynamicResource CategoryLabelString}" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                    <ComboBox x:Name="CategoryComboBox"
-                              Grid.Column="1"
-                              HorizontalAlignment="Stretch"
-                              SelectedItem="{Binding SubmissionInfo.CommonDiscInfo.Category, Converter={StaticResource ElementConverter}, Mode=TwoWay}" />
+                    <localControls:MeasuredDropDownComboBox x:Name="CategoryComboBox"
+                                                            Grid.Column="1"
+                                                            SizeToWidestItem="True"
+                                                            HorizontalAlignment="Left"
+                                                            SelectedItem="{Binding SubmissionInfo.CommonDiscInfo.Category, Converter={StaticResource ElementConverter}, Mode=TwoWay}" />
                   </Grid>
 
                   <Grid ColumnDefinitions="3*,7*" ColumnSpacing="4" HorizontalAlignment="Stretch">
                     <TextBlock Text="{DynamicResource RegionLabelString}" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                    <ComboBox x:Name="RegionComboBox"
-                              Grid.Column="1"
-                              HorizontalAlignment="Stretch"
-                              SelectedItem="{Binding SubmissionInfo.CommonDiscInfo.Region, Converter={StaticResource ElementConverter}, Mode=TwoWay}" />
+                    <localControls:MeasuredDropDownComboBox x:Name="RegionComboBox"
+                                                            Grid.Column="1"
+                                                            SizeToWidestItem="True"
+                                                            HorizontalAlignment="Left"
+                                                            SelectedItem="{Binding SubmissionInfo.CommonDiscInfo.Region, Converter={StaticResource ElementConverter}, Mode=TwoWay}" />
                   </Grid>
 
                   <controls:MultiSelectDropDown x:Name="LanguagesDropDown"
