@@ -110,16 +110,6 @@
     <Style Selector="ComboBox:pressed">
       <Setter Property="Background" Value="{DynamicResource ButtonPressedBackgroundBrush}" />
     </Style>
-    <Style Selector="controls|MeasuredDropDownComboBox /template/ ToggleButton#DropDownButton">
-      <Setter Property="Padding" Value="0" />
-      <Setter Property="MinWidth" Value="24" />
-      <Setter Property="Width" Value="24" />
-    </Style>
-    <Style Selector="controls|MeasuredDropDownComboBox /template/ PathIcon">
-      <Setter Property="Margin" Value="0" />
-      <Setter Property="Width" Value="12" />
-      <Setter Property="Height" Value="12" />
-    </Style>
     <Style Selector="CheckBox">
       <Setter Property="MinHeight" Value="23" />
       <Setter Property="VerticalAlignment" Value="Center" />

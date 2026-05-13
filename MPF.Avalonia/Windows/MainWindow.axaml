@@ -110,13 +110,12 @@
                 RowSpacing="4"
                 ColumnSpacing="18">
           <TextBlock Grid.Row="0" Text="{DynamicResource SystemLabelString}" VerticalAlignment="Center" />
-          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="Auto,180" ColumnSpacing="8">
-            <localControls:MeasuredDropDownComboBox x:Name="SystemTypeComboBox"
-                                                    IgnoreHeaderItemsInMeasurement="True"
-                                                    SizeToSelectedItem="True"
-                                                    ItemsSource="{Binding Systems}"
-                                                    SelectedItem="{Binding CurrentSystem, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
-                                                    IsEnabled="{Binding SystemTypeComboBoxEnabled}" />
+          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,150" ColumnSpacing="8">
+            <localControls:ComboBox x:Name="SystemTypeComboBox"
+                                    HorizontalAlignment="Stretch"
+                                    ItemsSource="{Binding Systems}"
+                                    SelectedItem="{Binding CurrentSystem, Converter={StaticResource ElementConverter}, Mode=TwoWay}"
+                                    IsEnabled="{Binding SystemTypeComboBoxEnabled}" />
             <ComboBox x:Name="MediaTypeComboBox"
                       Grid.Column="1"
                       ItemsSource="{Binding MediaTypes}"
