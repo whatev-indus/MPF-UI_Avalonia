@@ -544,7 +544,7 @@ namespace MPF.Avalonia.Windows
 
         public void SetMediaTypeVisibility()
         {
-            this.FindControl<ComboBox>("MediaTypeComboBox")!.IsVisible = true;
+            this.FindControl<ComboBox>("MediaTypeComboBox")!.IsVisible = MainViewModel.CurrentProgram == InternalProgram.DiscImageCreator;
         }
 
         private string CreateAboutText()

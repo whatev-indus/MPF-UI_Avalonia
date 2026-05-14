@@ -14,7 +14,6 @@
                   Title="{DynamicResource AppTitleString}">
   <local:WindowBase.Resources>
     <converters:ElementConverter x:Key="ElementConverter" />
-    <converters:DriveDisplayNameConverter x:Key="DriveDisplayNameConverter" />
   </local:WindowBase.Resources>
 
   <local:WindowBase.Styles>
@@ -109,7 +108,7 @@
                 RowSpacing="4"
                 ColumnSpacing="18">
           <TextBlock Grid.Row="0" Text="{DynamicResource SystemLabelString}" VerticalAlignment="Center" />
-          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,150" ColumnSpacing="8">
+          <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="*,160" ColumnSpacing="8">
             <ComboBox x:Name="SystemTypeComboBox"
                                     HorizontalAlignment="Stretch"
                                     ItemsSource="{Binding Systems}"
@@ -136,13 +135,7 @@
                     HorizontalAlignment="Left"
                     ItemsSource="{Binding Drives}"
                     SelectedItem="{Binding CurrentDrive, Mode=TwoWay}"
-                    IsEnabled="{Binding DriveLetterComboBoxEnabled}">
-            <ComboBox.ItemTemplate>
-              <DataTemplate>
-                <TextBlock Text="{Binding Converter={StaticResource DriveDisplayNameConverter}}" />
-              </DataTemplate>
-            </ComboBox.ItemTemplate>
-          </ComboBox>
+                    IsEnabled="{Binding DriveLetterComboBoxEnabled}" />
 
           <TextBlock Grid.Row="3" Text="{DynamicResource DriveSpeedLabelString}" VerticalAlignment="Center" />
           <ComboBox x:Name="DriveSpeedComboBox"
