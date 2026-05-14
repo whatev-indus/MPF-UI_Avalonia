@@ -2,10 +2,7 @@ name: Build and Test
 
 on:
     push:
-        branches: ["avalonia-build"]
-
-permissions:
-    contents: write
+        branches: ["master"]
 
 jobs:
     build:
