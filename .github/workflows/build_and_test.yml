@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
     push:
-        branches: ["build-avalonia"]
+        branches: ["avalonia-build"]
 
 permissions:
     contents: write
